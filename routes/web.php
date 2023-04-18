@@ -36,4 +36,5 @@ Route::resource('permission', PermissionController::class);
 // Route::get('/permission/create', [PermissionController::class, 'create'])->name('permission.create');
 // Route::get('/permission/create', [PermissionController::class, 'store'])->name('permission.store');
 
-
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::post('/users/store', [UserController::class, 'store'])->name('users.store');

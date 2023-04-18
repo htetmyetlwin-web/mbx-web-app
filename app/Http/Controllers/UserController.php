@@ -33,7 +33,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('users.create')->with([
+            'roles' => $roles,
+        ]);
     }
 
     /**
@@ -44,7 +47,33 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+    	$user = new User();
+    	$user->name = $request->name;
+    	$user->email = $request->email;
+        $user->password = Hash::make($request->password);
+    	$user->save();
+
+        if($user->save()){
+            $request->session()->flash('success', $user->name . ' has been updated');
+        }else{
+            $request->session()->flash('error', 'There was an error updating the user');
+        }
+        // for role_user table
+        // $role_user = new Role();
+        // $role->role_id = $request->role;
+        // $role->user_id = $user->id;
+        // $role->save();
+
+        return redirect()->route('users.index');
+
+      
+        
     }
 
     /**

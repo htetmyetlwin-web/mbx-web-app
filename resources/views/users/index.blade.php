@@ -9,9 +9,10 @@ Users
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Users</h3>
-        <!-- <div class="card-tools">
-            <a href=""  class="btn btn-primary"><i class="fas fa-plus-circle"></i> Create</a>
-        </div> -->
+        <!-- <a href="{{ route('users.create')}}" > <button type="button" class="btn btn-primary btn-sm float-left"><i class="fas fa-edit"></i></button></a> -->
+        <div class="card-tools">
+            <a href="{{ route('users.create')}}"  class="btn btn-primary"><i class="fas fa-plus-circle"></i> Create</a>
+        </div>
     </div>
 
     <div class="card-body table-responsive p-0">
